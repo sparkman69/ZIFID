@@ -3,228 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZIFID | Unlock the Internet Securely</title>
+    <title>Secure Connection | Privacy Check</title>
     <style>
-        :root {
-            --bg-color: #060b19;
-            --card-bg: #111b33;
-            --accent-color: #00ffcc;
-            --button-grad: linear-gradient(135deg, #00ffcc 0%, #00bfff 100%);
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-        }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            min-height: 100vh;
+            background-color: #0d1117;
+            color: #c9d1d9;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            min-height: 100vh;
             padding: 20px;
         }
-
-        .sales-container {
-            max-width: 600px;
-            width: 100%;
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 50px 40px;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            position: relative;
-        }
-
-        /* Limited Time Badge */
-        .promo-badge {
-            display: inline-block;
-            background: rgba(0, 255, 204, 0.12);
-            color: var(--accent-color);
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-            border: 1px solid rgba(0, 255, 204, 0.2);
-        }
-
-        /* Main Heading */
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 15px;
-            letter-spacing: -0.5px;
-        }
-
-        .brand-highlight {
-            background: var(--button-grad);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-        }
-
-        /* Value Hook Description */
-        .sub-hook {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 35px;
-        }
-
-        /* Premium Sales Bullet Points */
-        .benefit-stack {
-            text-align: left;
-            margin-bottom: 40px;
-            background: rgba(255, 255, 255, 0.02);
-            padding: 20px;
+        .card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
             border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            max-width: 480px;
+            width: 100%;
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
         }
-
-        .benefit-row {
+        .status-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 24px;
+        }
+        .pulse-ring {
+            border: 3px solid #ff4444;
+            border-radius: 50%;
+            height: 72px;
+            width: 72px;
+            position: absolute;
+            animation: pulsate 1.8s ease-out infinite;
+            opacity: 0;
+        }
+        .status-icon {
+            background-color: #21262d;
+            border: 2px solid #ff4444;
+            border-radius: 50%;
+            height: 72px;
+            width: 72px;
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
         }
-
-        .benefit-row:last-child {
-            margin-bottom: 0;
+        .status-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: #ff4444;
         }
-
-        .check-icon {
-            color: var(--accent-color);
-            margin-right: 12px;
-            margin-top: 3px;
-            flex-shrink: 0;
+        @keyframes pulsate {
+            0% {transform: scale(0.6, 0.6); opacity: 0.0;}
+            50% {opacity: 1.0;}
+            100% {transform: scale(1.2, 1.2); opacity: 0.0;}
         }
-
-        .benefit-text strong {
-            color: var(--text-main);
-            display: block;
-            font-size: 1rem;
+        .alert-badge {
+            background-color: rgba(255, 68, 68, 0.1);
+            color: #ff4444;
+            border: 1px solid rgba(255, 68, 68, 0.2);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
-
-        .benefit-text span {
-            color: var(--text-muted);
-            font-size: 0.9rem;
+        h1 {
+            color: #f0f6fc;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
         }
-
-        /* High-Converting Irresistible CTA */
-        .sales-cta-btn {
+        p {
+            color: #8b949e;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 28px;
+        }
+        .btn {
             display: block;
             width: 100%;
-            background: var(--button-grad);
-            color: #020c1b;
-            text-decoration: none;
-            padding: 22px 30px;
-            border-radius: 14px;
-            font-size: 1.35rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 12px 30px rgba(0, 255, 204, 0.35);
-            transition: all 0.2s ease-in-out;
+            background: linear-gradient(135deg, #1f6feb 0%, #094cb5 100%);
+            color: #ffffff;
             border: none;
-            cursor: pointer;
+            border-radius: 8px;
+            padding: 16px 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease, transform 0.1s ease;
+            box-shadow: 0 4px 14px rgba(31, 111, 235, 0.3);
         }
-
-        .sales-cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 18px 35px rgba(0, 255, 204, 0.55);
+        .btn:hover {
+            background: linear-gradient(135deg, #388bfd 0%, #1f6feb 100%);
         }
-
-        .sales-cta-btn:active {
-            transform: translateY(1px);
+        .btn:active {
+            transform: scale(0.98);
         }
-
-        .guarantee-text {
-            display: block;
-            margin-top: 15px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        /* Compliance Disclaimer */
-        footer {
-            margin-top: 35px;
+        .footer-note {
+            margin-top: 20px;
             font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.25);
-            text-align: center;
-            max-width: 540px;
-            line-height: 1.5;
+            color: #484f58;
         }
     </style>
 </head>
 <body>
 
-    <div class="sales-container">
-        <!-- Social Proof/Urgency Trigger -->
-        <div class="promo-badge">
-            Exclusive ZIFID User Deal Active
-        </div>
-
-        <!-- Sales Headline -->
-        <h1>The Most Secure VPN! <span class="brand-highlight"></span></h1>
-        
-        <p class="sub-hook">Bypass restricted content blocks, stop company tracking, and secure your personal devices with the industry's highest-rated encryption gateway.</p>
-
-        <!-- Premium Feature/Value Grid -->
-        <div class="benefit-stack">
-            <div class="benefit-row">
-                <span class="check-icon">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <div class="benefit-text">
-                    <strong>Bypass Global Content Restrictions</strong>
-                    <span>Instantly stream international Netflix libraries, sports broadcasts, and locked websites from any country.</span>
-                </div>
-            </div>
-            
-            <div class="benefit-row">
-                <span class="check-icon">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <div class="benefit-text">
-                    <strong>100% Blind-ISP Anonymity</strong>
-                    <span>Your internet service provider, network admins, and tracking bots cannot log your private download or search history.</span>
-                </div>
-            </div>
-
-            <div class="benefit-row">
-                <span class="check-icon">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </span>
-                <div class="benefit-text">
-                    <strong>Blazing-Fast WireGuard® Speeds</strong>
-                    <span>Engineered for seamless 4K streaming and low-ping gaming without bandwidth restriction or artificial throttling.</span>
-                </div>
+    <div class="card">
+        <div class="status-container">
+            <div class="pulse-ring"></div>
+            <div class="status-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                </svg>
             </div>
         </div>
 
-        <!-- The One Click Master Sales Trigger -->
-        <a href="https://t.camsk5.com/3947/10292/39641?source=FANVUE3&aff_sub5=SF_006OG000004lmDN" class="sales-cta-btn">
-            View Special Offer Now!
-        </a>
-        
-        <span class="guarantee-text">🔒 Risk-Free 30-Day Money-Back Guarantee Included</span>
+        <div>
+            <span class="alert-badge">Unsecure Connection</span>
+        </div>
+
+        <h1>Protect Your Privacy</h1>
+        <p>Your network traffic and browsing activity are currently visible to external trackers and your service provider. Enable encryption to hide your history immediately.</p>
+
+        <a href="https://t.camsk5.com/3947/10292/39641?source=FANVUE3&aff_sub5=SF_006OG000004lmDN" class="btn">Proceed Securely</a>
+
+        <div class="footer-note">
+            Secure Encrypted Tunnel Connection • Zero Logs Policy
+        </div>
     </div>
-
-    <footer>
-        <strong>Affiliate Disclaimer:</strong> This portal functions as an independent marketing channel for leading security solutions. We earn commission allocations from provider platforms when visitors deploy software services via our commercial referral portals.
-    </footer>
 
 </body>
 </html>
